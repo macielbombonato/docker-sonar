@@ -1,0 +1,32 @@
+version: "2"
+services:
+  sonarqube:
+    image: macielbombonato/docker-sonar:latest
+    container_name: sonar
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonar_db:5432/sonar
+    volumes:
+      - ~/files/sonarqube/conf:/opt/sonarqube/conf
+      - ~/files/sonarqube/data:/opt/sonarqube/data
+      - ~/files/sonarqube/extensions:/opt/sonarqube/extensions
+      - ~/files/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
+  sonar_db:
+    image: postgres
+    container_name: sonar_db
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - ~/files/sonarqube/postgresql:/var/lib/postgresql
+      - ~/files/sonarqube/postgresql_data:/var/lib/postgresql/data
+
+networks:
+  sonarnet:
+    driver: bridge
