@@ -6,19 +6,19 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   
 ### Quality Profiles  
   
+- Android
 - Cobertura  
 - C#  
 - CSS  
-- FLEX  
-- Kotlin  
+- Findbugs
 - Java  
   - Checkstyle  
-  - JMeter  
   - PMD  
   - Properties files  
 - Javascript  
 - json  
-- Objective C (versão open source)  
+- Kotlin  
+- Objective-C (versão open source)  
 - PHP  
 - Python  
 - Swift (versão open source)  
@@ -28,7 +28,6 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   
 ### Outros plugins  
   
-- PDF Report  
 - SonarGraph  
 - SVG Badges  
 - Timeline  
