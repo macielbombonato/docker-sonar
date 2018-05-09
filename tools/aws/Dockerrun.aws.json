@@ -1,0 +1,15 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+        "Name": "macielbombonato/docker-sonar:latest",
+        "Update": "true"
+    },
+    "Ports": [
+        {
+            "ContainerPort": "9000",
+            "HostPort": "80"
+        }
+    ],
+    "Logging": "/var/log/nginx"
+} 
+

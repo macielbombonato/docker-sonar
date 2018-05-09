@@ -38,7 +38,9 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   
   
 ## Como executar?  
-  
+
+### Na sua máquina local:
+
 Basta executar o comando abaixo no diretório raiz deste repositório.  
   
 > OBS.: Estou considerando que vc está em um ambiente unix.  
@@ -49,7 +51,23 @@ docker-compose up
   
 Depois de algum tempo, acesse a URL [http://localhost:9000](http://localhost:9000).  
   
-O usuário e senha são: **admin**  
+
+### AWS -> Elastic Beanstalk:
+
+Na Amazon, para criar uma máquina Elastic Beanstalk existem dois detalhes importantes:
+
+1. Use o arquivo **Dockerrun.aws.json** que está dentro de ```tools/aws```;
+2. As variáveis de ambiente (que estão abaixo no comentário) devem ser criadas e preenchidas na configuração do **EB** em **Software**. No final desta sessão temos o espaço para preencher as variáveis de ambiente (o que é preenchido aqui é acessível pelo container como variável de ambiente);
+
+> #### Variáveis de ambiente utilizadas pelo sonar  
+> SONARQUBE_JDBC_URL=jdbc:postgresql://YOUR-DATABASE-HOST:5432/sonar
+> SONARQUBE_JDBC_USERNAME=sonar
+> SONARQUBE_JDBC_PASSWORD=sonar
+
+
+### Em qualquer um desses ambientes:
+
+O usuário e senha inicial são: **admin**  
 
 Acesse pela primeira vez com ele para gerar a chave de acesso dos scripts que gerarão os relatórios.  
 
@@ -60,4 +78,3 @@ Caso tenha feito alguma alteração no Dockerfile ou incluido algum plugin, para
 ```
 ./build-image.sh
 ```  
-
