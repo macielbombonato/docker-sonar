@@ -60,9 +60,9 @@ Na Amazon, para criar uma máquina Elastic Beanstalk existem dois detalhes impor
 2. As variáveis de ambiente (que estão abaixo no comentário) devem ser criadas e preenchidas na configuração do **EB** em **Software**. No final desta sessão temos o espaço para preencher as variáveis de ambiente (o que é preenchido aqui é acessível pelo container como variável de ambiente);
 
 > #### Variáveis de ambiente utilizadas pelo sonar  
-> SONARQUBE_JDBC_URL=jdbc:postgresql://YOUR-DATABASE-HOST:5432/sonar
-> SONARQUBE_JDBC_USERNAME=sonar
-> SONARQUBE_JDBC_PASSWORD=sonar
+> SONARQUBE_JDBC_URL=jdbc:postgresql://YOUR-DATABASE-HOST:5432/sonar  
+> SONARQUBE_JDBC_USERNAME=sonar  
+> SONARQUBE_JDBC_PASSWORD=sonar  
 
 
 ### Em qualquer um desses ambientes:
