@@ -40,8 +40,6 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   
 ## Como executar?  
 
----
-
 ### Na sua máquina local:
 
 Basta executar o comando abaixo no diretório raiz deste repositório.  
