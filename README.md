@@ -36,8 +36,11 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   - git  
   - SVN  
   
+---
   
 ## Como executar?  
+
+---
 
 ### Na sua máquina local:
 
@@ -51,7 +54,8 @@ docker-compose up
   
 Depois de algum tempo, acesse a URL [http://localhost:9000](http://localhost:9000).  
   
-
+---
+  
 ### AWS -> Elastic Beanstalk:
 
 Na Amazon, para criar uma máquina Elastic Beanstalk existem dois detalhes importantes:
@@ -63,18 +67,63 @@ Na Amazon, para criar uma máquina Elastic Beanstalk existem dois detalhes impor
 > SONARQUBE_JDBC_URL=jdbc:postgresql://YOUR-DATABASE-HOST:5432/sonar  
 > SONARQUBE_JDBC_USERNAME=sonar  
 > SONARQUBE_JDBC_PASSWORD=sonar  
-
-
+  
+--- 
+  
 ### Em qualquer um desses ambientes:
 
 O usuário e senha inicial são: **admin**  
 
-Acesse pela primeira vez com ele para gerar a chave de acesso dos scripts que gerarão os relatórios.  
-
+Acesse pela primeira vez com ele para gerar a chave de acesso dos scripts que gerarão os relatórios. 
+  
+---
+  
 ## Alterações na imagem?  
 
 Caso tenha feito alguma alteração no Dockerfile ou incluido algum plugin, para criar a imagem nova execute o comando abaixo:  
 
 ```
 ./build-image.sh
-```  
+```
+
+---
+
+## Como publicar seus projetos no Sonar?
+
+### Projetos Java + gradle
+
+1. Criar o arquivo ```gradle.properties```:
+  
+No diretório raiz do seu usuário deve existir uma pasta ```.gradle``` ... Incluir dentro dessa pasta o arquivo ```gradle.properties``` com o conteúdo abaixo.
+  
+```
+systemProp.sonar.host.url=http://localhost:9000
+systemProp.sonar.login=HASHGERADANOSONAR
+```
+  
+Isso vai fazer o build da sua máquina apontar para o sonar que está local, para apontar para outra instancia do Sonar, basta alterar esses dados no arquivo de propriedades.
+
+2. No arquivo ```build.gradle``` temos que incluir o seguinte:
+   
+```
+apply plugin: 'jacoco'
+apply plugin: 'org.sonarqube'
+```
+  
+O jacoco monta o relatório de cobertura de testes.
+Dentro de buildScript -> dependencies inclua o seguinte:
+
+```
+classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+```
+
+3. Executar o build com envio do relatório.  
+
+```
+gradle build sonarqube
+```
+  
+Vai gerar o relatório e enviar ele para o server do sonar. aí é só consultar em:
+[http://localhost:9000/projects](http://localhost:9000/projects)
+
+---
