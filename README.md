@@ -89,7 +89,7 @@ Caso tenha feito alguma alteração no Dockerfile ou incluido algum plugin, para
 
 ## Como publicar seus projetos no Sonar?
 
-### Projetos Java + gradle
+### Projetos Java + gradle  
 
 1. Criar o arquivo ```gradle.properties```:
   
@@ -125,4 +125,18 @@ gradle build sonarqube
 Vai gerar o relatório e enviar ele para o server do sonar. aí é só consultar em:
 [http://localhost:9000/projects](http://localhost:9000/projects)
 
+---
+
+### Projetos NPM  
+  
+Dentro do diretório ```tools/scripts``` foi criado o script de exemplo **scanner-npm.sh**. 
+
+Abra este arquivo e altere o valor das variáveis de ambiente no inicio dele para atender seus projetos. Após isso, basta executá-lo:
+
+```
+./scanner-npm.sh
+```
+  
+> Para usuários Windows é necessário ter o terminal que emula linux (vem junto com o git).  
+  
 ---
