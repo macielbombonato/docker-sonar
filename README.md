@@ -42,9 +42,7 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
 
 ### Na sua máquina local:
 
-Basta executar o comando abaixo no diretório raiz deste repositório.  
-  
-> OBS.: Estou considerando que vc está em um ambiente unix.  
+Imaginando que o Docker já esteja instalado em sua máquina, basta executar o comando abaixo no diretório raiz deste repositório.  
   
 ```
 docker-compose up
@@ -52,6 +50,8 @@ docker-compose up
   
 Depois de algum tempo, acesse a URL [http://localhost:9000](http://localhost:9000).  
   
+
+Caso não tenha o Docker instalado na sua máquina, vale dar uma lida nessa documentação: [https://docs.docker.com/install/](https://docs.docker.com/install/).
 ---
   
 ### AWS -> Elastic Beanstalk:
