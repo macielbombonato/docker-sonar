@@ -51,7 +51,7 @@ docker-compose up
 Depois de algum tempo, acesse a URL [http://localhost:9000](http://localhost:9000).  
   
 
-Caso não tenha o Docker instalado na sua máquina, vale dar uma lida nessa documentação: [https://docs.docker.com/install/](https://docs.docker.com/install/).  
+> Caso não tenha o Docker instalado na sua máquina, vale dar uma lida nessa documentação: [https://docs.docker.com/install/](https://docs.docker.com/install/).  
 
 ---
   
