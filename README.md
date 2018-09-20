@@ -28,7 +28,6 @@ Esta é a versão da imagem oficial do Sonar incluíndo apenas os plugins abaixo
   
 ### Outros plugins  
   
-- SonarGraph  
 - SVG Badges  
 - Timeline  
 - Score  
