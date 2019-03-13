@@ -1,5 +1,7 @@
 # Docker-Sonar  
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/macielbombonato/docker-sonar.svg?branch=master)](https://travis-ci.org/macielbombonato/docker-sonar)
+
 ## Docker hub
 
 Para acessar o hub da imagem [clique aqui](https://hub.docker.com/r/macielbombonato/docker-sonar).
