@@ -1,4 +1,8 @@
 # Docker-Sonar  
+
+## Docker hub
+
+Para acessar o hub da imagem [clique aqui](https://hub.docker.com/r/macielbombonato/docker-sonar).
   
 ## O que temos aqui?  
   
