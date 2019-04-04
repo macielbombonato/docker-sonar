@@ -39,7 +39,7 @@ services:
     volumes:
       - ~/files/sonarqube/conf:/opt/sonarqube/conf
       - ~/files/sonarqube/data:/opt/sonarqube/data
-      - ~/files/sonarqube/extensions:/opt/sonarqube/extensions
+      #- ~/files/sonarqube/extensions:/opt/sonarqube/extensions
       - ~/files/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
 
 networks:
