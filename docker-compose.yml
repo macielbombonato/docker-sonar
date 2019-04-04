@@ -1,27 +1,11 @@
-version: "2"
+version: "2.1"
 services:
-  sonarqube:
-    image: macielbombonato/docker-sonar:latest
-    container_name: sonar
-    ports:
-      - "9000:9000"
-    networks:
-      - sonarnet
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonar_db:5432/sonar
-      - SONARQUBE_JDBC_USERNAME=sonar
-      - SONARQUBE_JDBC_PASSWORD=sonar
-    volumes:
-      - ~/files/sonarqube/conf:/opt/sonarqube/conf
-      - ~/files/sonarqube/data:/opt/sonarqube/data
-      #- ~/files/sonarqube/extensions:/opt/sonarqube/extensions
-      - ~/files/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-
   sonar_db:
-    image: postgres
+    image: postgres:11.2-alpine
     container_name: sonar_db
     networks:
-      - sonarnet
+      sonarnet:
+        ipv4_address: 172.16.238.10
     environment:
       - POSTGRES_USER=sonar
       - POSTGRES_PASSWORD=sonar
@@ -29,6 +13,43 @@ services:
       - ~/files/sonarqube/postgresql:/var/lib/postgresql
       - ~/files/sonarqube/postgresql_data:/var/lib/postgresql/data
 
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080
+    networks:
+      sonarnet:
+        ipv4_address: 172.16.238.11
+
+  sonarqube:
+    image: macielbombonato/docker-sonar:7.7-community
+    container_name: sonar
+    ports:
+      - "9000:9000"
+    networks:
+      sonarnet:
+        ipv4_address: 172.16.238.100
+    depends_on:
+      - sonar_db
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://172.16.238.10:5432/postgres
+      - SONARQUBE_JDBC_USERNAME=sonar
+      - SONARQUBE_JDBC_PASSWORD=sonar
+    volumes:
+      - ~/files/sonarqube/conf:/opt/sonarqube/conf
+      - ~/files/sonarqube/data:/opt/sonarqube/data
+      - ~/files/sonarqube/extensions:/opt/sonarqube/extensions
+      - ~/files/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+
 networks:
   sonarnet:
     driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.238.0/24
+        gateway: 172.16.238.1
+      - subnet: 2001:3984:3989::/64
