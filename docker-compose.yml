@@ -18,7 +18,8 @@ services:
       - ~/files/sonarqube/conf:/opt/sonarqube/conf
       - ~/files/sonarqube/data:/opt/sonarqube/data
       - ~/files/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-      #- ./plugins:/opt/sonarqube/extensions/plugins
+      # - ~/files/sonarqube/plugins:/opt/sonarqube/extensions/plugins
+      # - ~/files/sonarqube/filter:/opt/sonarqube/extensions/filter
 
   sonar_db:
     image: postgres:11.2-alpine

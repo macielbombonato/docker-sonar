@@ -1,3 +1,4 @@
-FROM sonarqube:7.7-community
+FROM sonarqube:7.9.6-community
 
-ADD plugins/** /opt/sonarqube/extensions/plugins/
+COPY plugins/** $SONARQUBE_HOME/extensions/plugins/
+
